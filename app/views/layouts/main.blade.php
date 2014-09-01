@@ -25,9 +25,8 @@
 
         <!-- Add your site or application content here -->
         <div class="container">
-        	<div class="row">
-        		<div ng-view></div>
-        	</div
+            <toaster-container></toaster-container>
+        	<div ng-view></div>
         </div>
 
         {{ HTML::script('packages/bower_components/jquery/dist/jquery.js') }}
@@ -52,7 +51,8 @@
         {{ HTML::script('packages/app/app.routes.js') }}
 
 
-		{{ HTML::script('packages/app/controllers/app.loginController.js') }}
+        {{ HTML::script('packages/app/controllers/app.loginController.js') }}
+		{{ HTML::script('packages/app/controllers/app.dashboardController.js') }}
 
 
     </body>

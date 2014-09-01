@@ -2,5 +2,6 @@ angular
 	.module('result', [
 		'ngRoute',
 		'ngAnimate',
-		'angular-loading-bar'
+		'angular-loading-bar',
+		'toaster'
 	]);
