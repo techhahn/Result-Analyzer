@@ -10,15 +10,15 @@ angular
 
 function sessionService(){
 	function set(key, value) {
-		return sessionStorage.setItem(key, value);
+		return localStorage.setItem(key, value);
 	}
 
 	function get(key) {
-		return sessionStorage.getItem(key);
+		return localStorage.getItem(key);
 	}
 
 	function destroy(key) {
-		return sessionStorage.removeItem(key);
+		return localStorage.removeItem(key);
 	}
 
 	return {
