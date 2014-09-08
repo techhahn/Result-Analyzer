@@ -16,5 +16,10 @@ Route::get('/', function()
 	return View::make('layouts.main');
 });
 
+Route::group(array('prefix'=>'/api'),function(){
+	Route::post('login/auth','AdminController@login');
+	Route::get('logout/auth','AdminController@logout');
+	Route::get('user/auth','AdminController@user');
+});
 
-Route::get('admin', array('as' => 'login', 'uses' => 'AdminController@adminLogin'));
+// Route::get('admin', array('as' => 'login', 'uses' => 'AdminController@adminLogin'));

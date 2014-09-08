@@ -46,14 +46,16 @@
 
 
         <!-- user defined js scripts -->
-        {{ HTML::script('packages/app/app.config.js') }}
         {{ HTML::script('packages/app/app.module.js') }}
         {{ HTML::script('packages/app/app.routes.js') }}
+        {{ HTML::script('packages/app/app.config.js') }}
 
 
         {{ HTML::script('packages/app/controllers/app.loginController.js') }}
 		{{ HTML::script('packages/app/controllers/app.dashboardController.js') }}
 
+        {{ HTML::script('packages/app/services/app.authenticationservice.js') }}
+        {{ HTML::script('packages/app/services/app.sessionservice.js') }}
 
     </body>
 </html>

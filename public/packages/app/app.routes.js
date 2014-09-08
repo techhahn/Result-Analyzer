@@ -4,7 +4,7 @@ angular
 
 function config($routeProvider) {
 	$routeProvider
-	.when('/',  {
+	.when('/login',  {
 		templateUrl: 'packages/app/views/login.html',
 		controller: loginController
 	})
