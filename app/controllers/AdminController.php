@@ -25,4 +25,8 @@ class AdminController extends \BaseController {
 	public function user() {
 		return Response::json(Auth::user());
 	}
+
+	public function loggedIn() {
+		return Auth::check()? 1 : 0;
+	}
 }

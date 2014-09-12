@@ -20,6 +20,7 @@ Route::group(array('prefix'=>'/api'),function(){
 	Route::post('login/auth','AdminController@login');
 	Route::get('logout/auth','AdminController@logout');
 	Route::get('user/auth','AdminController@user');
+	Route::get('loggedIn/auth','AdminController@loggedIn');
 });
 
 // Route::get('admin', array('as' => 'login', 'uses' => 'AdminController@adminLogin'));

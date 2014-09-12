@@ -15,7 +15,7 @@ function loginService($http, sessionService, $q) {
 	}
 
 	function logout() {
-		var logoutPromise = $http.get('/result-analyzer/Result-Analyzer/public/index.php/api/logout/auth', credentials)
+		var logoutPromise = $http.get('/result-analyzer/Result-Analyzer/public/index.php/api/logout/auth')
 			.success(function() {
 				sessionService.destroy('authenticated');
 				sessionService.destroy('authName');
@@ -28,6 +28,10 @@ function loginService($http, sessionService, $q) {
 		return sessionService.get('authenticated');
 	}
 
+	function isLoggedInHttp() {
+		return $http.get('/result-analyzer/Result-Analyzer/public/index.php/api/loggedIn/auth');
+	}
+
 	function user() {
 		return $http.get('/result-analyzer/Result-Analyzer/public/index.php/api/user/auth');
 	}
@@ -36,6 +40,7 @@ function loginService($http, sessionService, $q) {
 		login: login,
 		logout: logout,
 		isLoggedIn: isLoggedIn,
-		user: user
+		user: user,
+		isLoggedInHttp: isLoggedInHttp
 	}
 }
