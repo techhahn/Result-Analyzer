@@ -12,6 +12,10 @@
 
 
         {{ HTML::style('packages/bower_components/bootstrap/dist/css/bootstrap.css') }}
+
+        {{ HTML::style('packages/bower_components/bootstrap-material-design/css-compiled/material.css') }}
+        {{ HTML::style('packages/bower_components/bootstrap-material-design/css-compiled/ripples.css') }}
+
         {{ HTML::style('packages/bower_components/AngularJS-Toaster/toaster.css') }}
         {{ HTML::style('packages/bower_components/angular-loading-bar/build/loading-bar.css') }}
 
@@ -26,11 +30,14 @@
         <!-- Add your site or application content here -->
         <div class="container">
             <toaster-container></toaster-container>
+            <div nav-bar></div nav-bar>
         	<div ng-view></div>
         </div>
 
         {{ HTML::script('packages/bower_components/jquery/dist/jquery.js') }}
         {{ HTML::script('packages/bower_components/bootstrap/dist/js/bootstrap.js') }}
+        {{ HTML::script('packages/bower_components/bootstrap-material-design/scripts/material.js') }}
+        {{ HTML::script('packages/bower_components/bootstrap-material-design/scripts/ripples.js') }}
 
         {{ HTML::script('packages/bower_components/angular/angular.js') }}
         {{ HTML::script('packages/bower_components/angular-route/angular-route.js') }}
@@ -56,6 +63,8 @@
 
         {{ HTML::script('packages/app/services/app.authenticationservice.js') }}
         {{ HTML::script('packages/app/services/app.sessionservice.js') }}
+
+        {{ HTML::script('packages/app/directives/app.navigationbarDirective.js') }}
 
     </body>
 </html>
