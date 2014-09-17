@@ -2,15 +2,14 @@ angular
 	.module('result')
 	.factory('loginService', loginService)
 
-loginService.$inject = ['$http', 'sessionService', '$rootScope'];
+loginService.$inject = ['$http', 'sessionService', '$q'];
 
-function loginService($http, sessionService, $rootScope) {
+function loginService($http, sessionService, $q) {
 	function login(credentials) {
 		var loginPromise = $http.post('/result-analyzer/Result-Analyzer/public/index.php/api/login/auth', credentials)
 			.success(function(data) {
 				sessionService.set('authenticated', data.email);
 				sessionService.set('authName', data.name);
-				$rootScope.$broadcast('updateUser', {login: true, user: data});
 			});
 		return loginPromise;
 	}
@@ -20,7 +19,6 @@ function loginService($http, sessionService, $rootScope) {
 			.success(function() {
 				sessionService.destroy('authenticated');
 				sessionService.destroy('authName');
-				$rootScope.$broadcast('updateUser', {login: false});
 			});
 
 		return logoutPromise;
