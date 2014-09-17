@@ -3,5 +3,6 @@ angular
 		'ngRoute',
 		'ngAnimate',
 		'angular-loading-bar',
-		'toaster'
+		'toaster',
+		'ui.router'
 	]);

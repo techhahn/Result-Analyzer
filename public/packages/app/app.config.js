@@ -2,38 +2,22 @@ angular
 	.module('result')
 	.run(runBlock);
 
-runBlock.$inject = ['$rootScope', '$location', 'loginService', 'toaster', 'sessionService'];
+runBlock.$inject = ['$rootScope', '$state', 'loginService', 'toaster', 'sessionService'];
 
-function runBlock($rootScope, $location, loginService, toaster, sessionService) {
+function runBlock($rootScope, $state, loginService, toaster, sessionService) {
 
 	var routesThatRequireAuth = ['/dashboard'];
 	var routesThatDoesNotRequireAuth = ['/login'];
 
-	$rootScope.$on('$routeChangeStart', function(event, next, current) {
-		if(_(routesThatRequireAuth).contains($location.path()) && !loginService.isLoggedIn()) {
-			$location.path('/login');
+	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+		if(_(routesThatRequireAuth).contains(fromState.url) && !loginService.isLoggedIn()) {
+			$state.transitionTo(toState.name || 'login');
 		}
 
-		if(_(routesThatDoesNotRequireAuth).contains($location.path()) && loginService.isLoggedIn()) {
-			$location.path('/dashboard');
+		if(_(routesThatDoesNotRequireAuth).contains(fromState.url) && loginService.isLoggedIn()) {
+			$state.transitionTo(toState.name || 'dashboard');
 		}
 
-		if(loginService.isLoggedIn()) {
-			loginService.isLoggedInHttp()
-				.success(function(data) {
-					if(data == 1) {
-						loginService.user()
-							.success(function(user) {
-								if(!user.email == sessionService.get('authenticated')) {
-									loginService.logout();
-								}
-							})
-					}
-					else if(data == 0) {
-						loginService.logout();
-					}
-				})
-		}
 	})
 
 

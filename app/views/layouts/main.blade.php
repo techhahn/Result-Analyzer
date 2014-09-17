@@ -31,7 +31,7 @@
         <div class="container">
             <toaster-container></toaster-container>
             <div nav-bar></div nav-bar>
-        	<div ng-view></div>
+        	<div ui-view></div>
         </div>
 
         {{ HTML::script('packages/bower_components/jquery/dist/jquery.js') }}

@@ -2,14 +2,20 @@ angular
 	.module('result')
 	.config(config);
 
-function config($routeProvider) {
-	$routeProvider
-	.when('/login',  {
-		templateUrl: 'packages/app/views/login.html',
-		controller: loginController
+function config($stateProvider) {
+	$stateProvider
+	.state('/', {
+		url: '/',
+		template: '<h1>Default view </h1>'
 	})
-	.when('/dashboard',  {
+	.state('login',  {
+		url: '/login',
+		templateUrl: 'packages/app/views/login.html',
+		controller: 'loginController'
+	})
+	.state('dashboard',  {
+		url: '/dashboard',
 		templateUrl: 'packages/app/views/dashboard.html',
-		controller: dashboardController
+		controller: 'dashboardController'
 	})
 }
