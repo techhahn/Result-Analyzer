@@ -20,6 +20,8 @@
         {{ HTML::style('packages/bower_components/angular-loading-bar/build/loading-bar.css') }}
 
         {{ HTML::style('packages/bower_components/animate-css/animate.css') }}
+        
+        {{ HTML::style('packages/css/main.css') }}
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     </head>
     <body ng-app="result">
