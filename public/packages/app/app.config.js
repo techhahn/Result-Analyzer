@@ -10,12 +10,16 @@ function runBlock($rootScope, $state, loginService, toaster, sessionService) {
 	var routesThatDoesNotRequireAuth = ['/login'];
 
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-		if(_(routesThatRequireAuth).contains(fromState.url) && !loginService.isLoggedIn()) {
-			$state.transitionTo(toState.name || 'login');
+		if(_(routesThatRequireAuth).contains(toState.url) && !loginService.isLoggedIn()) {
+			$state.transitionTo(fromState.name || 'login');
+			toaster.pop('error', 'Not logged In!', 'You are not logged in. You cannot access these pages without login.');
+			event.preventDefault();
 		}
 
-		if(_(routesThatDoesNotRequireAuth).contains(fromState.url) && loginService.isLoggedIn()) {
-			$state.transitionTo(toState.name || 'dashboard');
+		if(_(routesThatDoesNotRequireAuth).contains(toState.url) && loginService.isLoggedIn()) {
+			$state.transitionTo(fromState.name || 'dashboard');
+			toaster.pop('warning', 'Already logged In.', 'You are already logged In, please log out first to log in with a different account.');
+			event.preventDefault();
 		}
 
 	})
