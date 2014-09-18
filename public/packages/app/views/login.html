@@ -1,20 +1,30 @@
 <div class="row">
-	<div class="col-md-4 col-md-offset-6">
-		
-		<form action="" method="POST" role="form">
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>Result Analyzer</h1>
+				<p>Result Analyzer helps to organize the students exam results in on central location.</p>
+				<p>
+					<a class="btn btn-primary btn-lg">Learn more</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">		
+		<form name="loginForm" ng-submit="doLogin()" class="well well-lg" method="POST" role="form">
 			<legend>Login</legend>
 
 			<div class="form-group">
-				<label for="">Username</label>
-				<input type="text" ng-model="credentials.email" class="form-control" id="" placeholder="Please Enter Your Username">
+				<label for="">Email</label>
+				<input type="email" ng-model="credentials.email" class="form-control" id="" placeholder="Please Enter Your Email Address" required>
 			</div>
 
 			<div class="form-group">
 				<label for="">Password</label>
-				<input type="password" ng-model="credentials.password" class="form-control" id="" placeholder="Please Enter Your Password">
+				<input type="password" ng-model="credentials.password" class="form-control" id="" placeholder="Please Enter Your Password" required>
 			</div>
 
-			<button type="submit" ng-click="doLogin()" class="btn btn-primary">Login</button>
+			<button ng-disabled="loginForm.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
 		</form>
 	</div>
 </div>
