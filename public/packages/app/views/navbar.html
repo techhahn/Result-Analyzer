@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav  ng-show="isloggedIn" class="navbar navbar-default" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -18,9 +18,10 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li ui-sref-active="active" ng-hide="isloggedIn"><a ui-sref="login">Login</a></li>
 			<li ng-show="isloggedIn" class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown">{{ user.name }} <b class="caret"></b></a>
+				<a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ user.name }} <b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a ng-click="logout()">Logout</a></li>
+					<li ui-sref-active="active"><a ui-sref="profile">Profile</a></li>
 				</ul>
 			</li>
 		</ul>

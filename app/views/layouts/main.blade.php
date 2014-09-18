@@ -61,7 +61,8 @@
 
 
         {{ HTML::script('packages/app/controllers/app.loginController.js') }}
-		{{ HTML::script('packages/app/controllers/app.dashboardController.js') }}
+        {{ HTML::script('packages/app/controllers/app.dashboardController.js') }}
+		{{ HTML::script('packages/app/controllers/app.profileController.js') }}
 
         {{ HTML::script('packages/app/services/app.authenticationservice.js') }}
         {{ HTML::script('packages/app/services/app.sessionservice.js') }}
