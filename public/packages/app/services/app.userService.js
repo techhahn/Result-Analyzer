@@ -8,8 +8,8 @@ angular
 	.factory('userService', userService)
 
 function userService($resource, loginService, toaster, $state) {
-	var User = $resource('/result-analyzer/Result-Analyzer/public/index.php/user/1', null, {
-		'update': {method: 'PUT'}
+	var User = $resource('/result-analyzer/Result-Analyzer/public/index.php/user/:id', null, {
+		'update': {method: 'PUT', params: { id: 1 }, isArray: false}
 	});
 
 	var add = function(credentials) {
