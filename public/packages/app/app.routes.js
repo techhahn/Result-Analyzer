@@ -5,7 +5,7 @@ angular
 function config($stateProvider) {
 	$stateProvider
 	.state('/', {
-		url: '/',
+		url: '',
 		template: '<h1>Default view </h1>'
 	})
 	.state('login',  {
@@ -33,15 +33,15 @@ function config($stateProvider) {
 		
 	})
 	.state('profile.edit', {
+		parent: 'profile',
 		url: '/edit',
-		template: '<p>Edit User: <input type="text" ng-model="user.name"></p>'
+		templateUrl: 'packages/app/views/editProfile.html',
+		controller: 'editProfileController'
 	})
 	.state('profile.adduser', {
+		parent: 'profile',
 		url: '/adduser',
-		template: '<p>New User</p>'
-	})
-	.state('profile.feature2', {
-		url: '/feature2',
-		template: '<p>Second Feature</p>'
+		templateUrl: 'packages/app/views/newuser.html',
+		controller: 'newuserController'
 	})
 }

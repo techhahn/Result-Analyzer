@@ -62,10 +62,13 @@
 
         {{ HTML::script('packages/app/controllers/app.loginController.js') }}
         {{ HTML::script('packages/app/controllers/app.dashboardController.js') }}
-		{{ HTML::script('packages/app/controllers/app.profileController.js') }}
+        {{ HTML::script('packages/app/controllers/app.profileController.js') }}
+        {{ HTML::script('packages/app/controllers/app.newuserController.js') }}
+		{{ HTML::script('packages/app/controllers/app.editProfileController.js') }}
 
-        {{ HTML::script('packages/app/services/app.authenticationservice.js') }}
-        {{ HTML::script('packages/app/services/app.sessionservice.js') }}
+        {{ HTML::script('packages/app/services/app.authenticationService.js') }}
+        {{ HTML::script('packages/app/services/app.sessionService.js') }}
+        {{ HTML::script('packages/app/services/app.userService.js') }}
 
         {{ HTML::script('packages/app/directives/app.navigationbarDirective.js') }}
 

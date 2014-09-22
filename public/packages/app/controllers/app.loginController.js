@@ -19,19 +19,5 @@ function loginController($scope, $location, toaster, loginService) {
 			.error(function() {
 				toaster.pop('error', "Error email or password!");
 			});
-
-
-
-
-		// var un = $scope.credentials.username,
-		// 	pass = $scope.credentials.password;
-
-		// if(un == 'admin' && pass == 'admin') {
-		// 	toaster.pop('success', "Welcome", "Loggedin Sucessfully");
-		// 	$location.path('/dashboard');
-		// }
-		// else {			
-		// 	toaster.pop('error', "Login Failed", "Username or Password incorrect!");
-		// }
 	}
 }

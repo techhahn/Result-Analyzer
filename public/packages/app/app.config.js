@@ -6,7 +6,7 @@ runBlock.$inject = ['$rootScope', '$state', 'loginService', 'toaster', 'sessionS
 
 function runBlock($rootScope, $state, loginService, toaster, sessionService) {
 
-	var routesThatRequireAuth = ['/dashboard', '/profile'];
+	var routesThatRequireAuth = ['/dashboard', '/profile', '/profile/adduser'];
 	var routesThatDoesNotRequireAuth = ['/login'];
 
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
