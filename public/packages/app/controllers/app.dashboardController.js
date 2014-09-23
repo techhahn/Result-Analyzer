@@ -1,8 +1,9 @@
 angular
 	.module('result')
-	.controller('dashboard', dashboardController)
+	.controller('dashboardController', dashboardController)
 
+dashboardController.$inject = ['$scope', 'loginService', '$location'];
 
-function dashboardController($scope) {
-	
+function dashboardController($scope, loginService, $location) {
+
 }

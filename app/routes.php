@@ -37,6 +37,7 @@ Route::get('verify/{id}/{secret}', function($id, $secret){
 });
 
 Route::resource('user', 'UsersController');
+Route::resource('campus', 'CampusController');
 
 Route::group(array('prefix'=>'/api'),function(){
 	Route::post('login/auth','AdminController@login');

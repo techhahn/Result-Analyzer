@@ -44,4 +44,45 @@ function config($stateProvider) {
 		templateUrl: 'packages/app/views/newuser.html',
 		controller: 'newuserController'
 	})
+	.state('campus', {
+		parent: 'dashboard',
+		url: '/campus',
+		templateUrl: 'packages/app/views/campus.html',
+		resolve: {
+			campus: ['campusService', function(campusService) {
+				return campusService.all().$promise.then(function(data) {
+					return data;
+				});
+			}]
+		},
+		controller: 'campusController'
+	})
+	.state('courses', {
+		parent: 'dashboard',
+		url: '/courses',
+		templateUrl: 'packages/app/views/courses.html'
+	})
+	.state('students', {
+		parent: 'dashboard',
+		url: '/students',
+		templateUrl: 'packages/app/views/students.html'
+	})
+	.state('exams', {
+		parent: 'dashboard',
+		url: '/exams',
+		templateUrl: 'packages/app/views/exams.html'
+	})
+	.state('campusDetails', {
+		parent: 'campus',
+		url: '/campusDetails:id',
+		controller: 'campusDetailsController',
+		templateUrl: 'packages/app/views/campusDetails.html',
+		resolve: {
+			campusDetail: ['campusService', '$stateParams', function(campusService, $stateParams) {
+				return campusService.get($stateParams.id).$promise.then(function(data) {
+					return data;
+				})
+			}]
+		}
+	})
 }

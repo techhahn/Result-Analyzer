@@ -22,6 +22,7 @@
         {{ HTML::style('packages/bower_components/animate-css/animate.css') }}
         
         {{ HTML::style('packages/css/main.css') }}
+        {{ HTML::style('packages/css/sidebar.css') }}
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     </head>
     <body ng-app="result">
@@ -64,11 +65,14 @@
         {{ HTML::script('packages/app/controllers/app.dashboardController.js') }}
         {{ HTML::script('packages/app/controllers/app.profileController.js') }}
         {{ HTML::script('packages/app/controllers/app.newuserController.js') }}
-		{{ HTML::script('packages/app/controllers/app.editProfileController.js') }}
+        {{ HTML::script('packages/app/controllers/app.editProfileController.js') }}
+        {{ HTML::script('packages/app/controllers/app.campusController.js') }}
+		{{ HTML::script('packages/app/controllers/app.campusDetailsController.js') }}
 
         {{ HTML::script('packages/app/services/app.authenticationService.js') }}
         {{ HTML::script('packages/app/services/app.sessionService.js') }}
         {{ HTML::script('packages/app/services/app.userService.js') }}
+        {{ HTML::script('packages/app/services/app.campusService.js') }}
 
         {{ HTML::script('packages/app/directives/app.navigationbarDirective.js') }}
 

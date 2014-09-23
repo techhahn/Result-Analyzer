@@ -1,0 +1,70 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<ul class="no-style">
+		</ul>
+
+		<div class="list-group">
+			<div class="well">
+
+			    <div class="list-group-item">
+			    	<button class="btn btn-default btn-block btn-lg"  data-toggle="modal" data-target="#myModal">Add new campus</button>
+			    </div>
+
+
+			    <div ng-repeat="campus in campuses" class="list-group-item">
+			        <div class="row-action-primary">
+			            <i class="glyphicon glyphicon-tint"></i>
+			        </div>
+			        <div class="row-content">
+			            <!-- <div class="least-content">15m</div> -->
+			            <h4 class="list-group-item-heading"><a ui-sref="campusDetails({ id:campus.id})">{{ campus.title }}</a></h4>
+			            <p class="list-group-item-text">{{ campus.description }}</p>
+			        </div>
+			    	<div class="list-group-separator"></div>
+			    </div>
+			</div>
+			<h3 ng-hide="campuses.length"></h3>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div ui-view></div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add new Campus</h4>
+      </div>
+      <div class="modal-body">
+        <form ng-submit="addCampus()" name="newCampus" role="form">
+        	<legend>Form title</legend>
+        
+        	<div class="form-group">
+        		<label for="">Campus Name:</label>
+        		<input type="text" class="form-control" ng-model="credentials.title" placeholder="Campus name" required>
+        	</div>
+        
+        	<div class="form-group">
+        		<label for="">Campus Description:</label>
+        		<span class="help-block" ng-show="credentials.description.length < 30 || !credentials.description.length">Atleast {{ 30 - credentials.description.length }} words.</span>
+        		<textarea class="form-control" ng-model="credentials.description" rows="3" required ></textarea>
+        	</div>
+
+         	<div class="form-group">
+        		<span class="help-block" ng-repeat="error in errors">{{ error[0] }}</span>
+        	</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-disabled="newCampus.$invalid" ng-click="addCampus()">Add new campus</button>
+      </div>
+    </div>
+  </div>
+</div>
