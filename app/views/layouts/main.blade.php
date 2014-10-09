@@ -67,12 +67,14 @@
         {{ HTML::script('packages/app/controllers/app.newuserController.js') }}
         {{ HTML::script('packages/app/controllers/app.editProfileController.js') }}
         {{ HTML::script('packages/app/controllers/app.campusController.js') }}
-		{{ HTML::script('packages/app/controllers/app.campusDetailsController.js') }}
+        {{ HTML::script('packages/app/controllers/app.campusDetailsController.js') }}
+		{{ HTML::script('packages/app/controllers/app.courseController.js') }}
 
         {{ HTML::script('packages/app/services/app.authenticationService.js') }}
         {{ HTML::script('packages/app/services/app.sessionService.js') }}
         {{ HTML::script('packages/app/services/app.userService.js') }}
         {{ HTML::script('packages/app/services/app.campusService.js') }}
+        {{ HTML::script('packages/app/services/app.courseService.js') }}
 
         {{ HTML::script('packages/app/directives/app.navigationbarDirective.js') }}
 

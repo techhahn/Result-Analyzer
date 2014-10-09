@@ -13,6 +13,10 @@ function campusController($scope, campus, $sanitize, campusService, toaster) {
 	$scope.campuses = campus;
 	$scope.errors = {};
 
+	$scope.$on('hideCampus', function(event, args) {
+		$scope.hide = args.hidden;
+	})
+
 	$scope.addCampus = function() {
 		var credentials = {};
 		credentials.title = $sanitize($scope.credentials.title);

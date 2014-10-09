@@ -9,3 +9,5 @@ Thumbs.db
 
 /node_modules
 /public/packages/bower_components
+
+public/app/config/mail.php

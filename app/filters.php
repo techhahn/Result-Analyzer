@@ -48,6 +48,15 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('ngAuth', function()
+{
+	if (Auth::guest())
+	{
+		return Response::make('Unauthorized', 401);
+	}
+});
+
+
 
 Route::filter('auth.basic', function()
 {

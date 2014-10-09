@@ -7,7 +7,7 @@ angular
 	.module('result')
 	.factory('campusService', campusService)
 
-function campusService($resource, loginService, toaster, $state) {
+function campusService($resource, loginService, toaster, $state, $http) {
 	var Campus = $resource('/result-analyzer/Result-Analyzer/public/index.php/campus/:id', null, {
 		'update': {method: 'PUT', params: { id: '@id '}, isArray: false}
 	});
@@ -49,9 +49,15 @@ function campusService($resource, loginService, toaster, $state) {
 			});
 	}
 
+
+	var allCampuses = function() {
+		return $http.get('/result-analyzer/Result-Analyzer/public/index.php/allCampuses');
+	}
+
 	return {
 		all: all,
 		add: add,
-		get: get
+		get: get,
+		allCampuses: allCampuses
 	}
 }

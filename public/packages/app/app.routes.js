@@ -60,7 +60,15 @@ function config($stateProvider) {
 	.state('courses', {
 		parent: 'dashboard',
 		url: '/courses',
-		templateUrl: 'packages/app/views/courses.html'
+		templateUrl: 'packages/app/views/courses.html',
+		controller: 'coursesController',
+		resolve: {
+			courses: ['courseService', function(courseService) {
+				return courseService.all().$promise.then(function(data) {
+					return data;
+				})
+			}]
+		}
 	})
 	.state('students', {
 		parent: 'dashboard',

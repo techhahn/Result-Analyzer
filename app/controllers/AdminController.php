@@ -10,7 +10,7 @@ class AdminController extends \BaseController {
 			return Auth::user();
 		}
 		else {
-			return Response::json(array('message' => 'Error Username or Password'), 500);
+			return Response::json(array('message' => 'Eraror Username or Password'), 500);
 		}
 
 	}

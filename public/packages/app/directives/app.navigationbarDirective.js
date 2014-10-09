@@ -16,6 +16,9 @@ function navBar(loginService, $log, $location) {
 				.success(function(data) {
 					scope.user = data;
 				})
+				.error(function(data, status) {
+					loginService.logout();
+				})
 
 			scope.isloggedIn = loginService.isLoggedIn();
 

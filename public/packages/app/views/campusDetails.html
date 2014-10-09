@@ -1,8 +1,16 @@
-<div class="row">
+<div class="row" ng-init="hidden(true)">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="well">
+			<button type="button" ng-click="hidden(false)" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 			<h1 class="text-center">{{ campus.title }}</h1>
 			<p class="text-center muted">{{ campus.description }}</p>
+
+			<h3>Courses Offered At {{campus.title}} are</h3>
+
+			<ul>
+				<li ng-repeat="course in campus.courses">{{ course.title }}</li>
+			</ul>
+			<button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>
 		</div>
 
 	</div>
