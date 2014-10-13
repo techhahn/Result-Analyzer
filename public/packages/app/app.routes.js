@@ -70,11 +70,6 @@ function config($stateProvider) {
 			}]
 		}
 	})
-	.state('students', {
-		parent: 'dashboard',
-		url: '/students',
-		templateUrl: 'packages/app/views/students.html'
-	})
 	.state('exams', {
 		parent: 'dashboard',
 		url: '/exams',
@@ -92,5 +87,23 @@ function config($stateProvider) {
 				})
 			}]
 		}
+	})
+	.state('students', {
+		parent: 'dashboard',
+		url: '/students',
+		templateUrl: 'packages/app/views/students.html',
+		controller: 'studentsController'
+	})
+	.state('allStudents', {
+		parent: 'students',
+		url: '/allStudents',
+		templateUrl: 'packages/app/views/allStudents.html',
+		controller: 'allStudentsController'
+	})
+	.state('newStudents', {
+		parent: 'students',
+		url: '/newStudents',
+		templateUrl: 'packages/app/views/newStudents.html',
+		controller: 'newStudentsController'
 	})
 }
