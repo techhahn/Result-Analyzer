@@ -24,6 +24,9 @@ Route::get('allCampuses', function() {
 	return Campus::all(array('id', 'title'));
 });
 
+Route::get('campusCourses/{id}', function($id) {
+	return Campus::find($id)->courses;
+});
 
 Route::get('verify/{id}/{secret}', function($id, $secret){
 	$user = User::find($id);
@@ -44,6 +47,7 @@ Route::get('verify/{id}/{secret}', function($id, $secret){
 Route::resource('user', 'UsersController');
 Route::resource('campus', 'CampusController');
 Route::resource('course', 'CoursesController');
+Route::resource('student', 'StudentsController');
 
 Route::group(array('prefix'=>'/api'),function(){
 	Route::post('login/auth','AdminController@login');

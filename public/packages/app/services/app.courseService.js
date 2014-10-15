@@ -12,6 +12,18 @@ function courseService($resource, loginService) {
 		'update': {method: 'PUT', params: { id: '@id '}, isArray: false}
 	});
 
+	var get = function(uid) {
+		return Course.get({id: uid}, function() {}, 
+			function(response) {
+				if (response.status == 401) {
+					$state.transitionTo('login');
+					toaster.pop('error', 'You are not logged in', 'Please login Again');
+					loginService.logout();
+					return false;
+				};
+			})
+	}
+
 	var all = function() {
 		return Course.query(function() {},
 			function(response) {
@@ -38,7 +50,8 @@ function courseService($resource, loginService) {
 
 	return {
 		all: all,
-		add: add
+		add: add,
+		get: get
 	}
 
 }

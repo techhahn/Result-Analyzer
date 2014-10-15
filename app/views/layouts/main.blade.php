@@ -81,6 +81,7 @@
         {{ HTML::script('packages/app/services/app.studentsService.js') }}
 
         {{ HTML::script('packages/app/directives/app.navigationbarDirective.js') }}
+        {{ HTML::script('packages/app/directives/app.newStudentDirective.js') }}
 
     </body>
 </html>

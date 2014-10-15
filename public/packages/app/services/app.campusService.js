@@ -12,6 +12,16 @@ function campusService($resource, loginService, toaster, $state, $http) {
 		'update': {method: 'PUT', params: { id: '@id '}, isArray: false}
 	});
 
+	var getCourses = function(cid) {
+		return $http.get('/result-analyzer/Result-Analyzer/public/index.php/campusCourses/' + cid).
+				  success(function(data, status, headers, config) {
+				    return data;
+				  }).
+				  error(function(data, status, headers, config) {
+				    toaster.pop('error', data)
+				  });
+	}
+
 	var get = function(uid) {
 		return Campus.get({id: uid}, function() {}, 
 			function(response) {
@@ -58,6 +68,7 @@ function campusService($resource, loginService, toaster, $state, $http) {
 		all: all,
 		add: add,
 		get: get,
-		allCampuses: allCampuses
+		allCampuses: allCampuses,
+		getCourses: getCourses
 	}
 }
