@@ -7,10 +7,17 @@ angular
 	.module('result')
 	.controller('allStudentsController', allStudentsController);
 
-allStudentsController.$inject = ['$scope'];
+allStudentsController.$inject = ['$scope', 'studentsFactory'];
 
-function allStudentsController($scope) {
-	$scope.credentials = {};
+function allStudentsController($scope, studentsFactory) {
+	$scope.students = {};
+
+	studentsFactory.all()
+		.$promise.then(
+			function(data){
+				$scope.students = data;
+			}
+		);
 
 	
 }
