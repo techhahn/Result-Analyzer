@@ -1,6 +1,6 @@
-<div class="row" ng-init="hidden(true)">
+<div class="row" ng-init="hidden(true); delete=false;">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<div class="well">
+		<div class="well clearfix">
 			<button type="button" ng-click="hidden(false)" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 			<h1 class="text-center">{{ campus.title }}</h1>
 			<p class="text-center muted">{{ campus.description }}</p>
@@ -8,10 +8,16 @@
 			<h3>Courses Offered At {{campus.title}} are</h3>
 
 			<ul>
+				<li ng-hide="campus.courses.length">No Courses found....</li>
 				<li ng-repeat="course in campus.courses">{{ course.title }}</li>
 			</ul>
-			<button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>
+			<button ng-click="delete=true;" data-toggle="tooltip" data-placement="top" title="Delete Campus?" type="button" class="btn btn-link pull-right"><span class="glyphicon glyphicon-trash"></span></button>
+			<button data-toggle="tooltip" data-placement="left" title="Edit Campus" type="button" class="btn btn-link pull-right"><span class="glyphicon glyphicon-pencil"></span></button>
 		</div>
-
+		<div ng-show="delete" class="alert alert-warning clearfix" role="alert">
+			<p>Are you sure you want to delete this campus? It will delete all associated data with, including courses, students and exam results.</p>
+			<button ng-click="deleteCampus(campus.id)" type="button" class="btn btn-danger pull-right btn-lg">Delete? <span class="glyphicon glyphicon-ok-circle"></span></button>
+			<button ng-click="delete=false;" type="button" class="btn btn-success pull-right btn-lg">Cancel <span class="glyphicon glyphicon-remove-circle"></span></button>
+		</div>
 	</div>
 </div>

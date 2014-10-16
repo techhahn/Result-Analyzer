@@ -64,11 +64,23 @@ function campusService($resource, loginService, toaster, $state, $http) {
 		return $http.get('/result-analyzer/Result-Analyzer/public/index.php/allCampuses');
 	}
 
+	var remove = function(_id) {
+		return Campus.delete({id:_id}, function() {},
+			function(response){
+				if (response.status == 401) {
+					toaster.pop('error', 'You are not logged in', 'Please login Again');
+					loginService.logout();
+					$state.transitionTo('login');
+				};				
+			})
+	}
+
 	return {
 		all: all,
 		add: add,
 		get: get,
 		allCampuses: allCampuses,
-		getCourses: getCourses
+		getCourses: getCourses,
+		remove: remove
 	}
 }
