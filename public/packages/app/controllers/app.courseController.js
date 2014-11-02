@@ -12,6 +12,9 @@ function coursesController($scope, courses, campusService, $sanitize, courseServ
 	$scope.credentials = {};
 	$scope.allCampus = {};
 
+	$scope.$on('hideCampus', function(event, args) {
+		$scope.hide = args.hidden;
+	});
 
 	$scope.addCourse = function() {
 		var credentials = {

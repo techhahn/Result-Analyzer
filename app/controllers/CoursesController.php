@@ -56,7 +56,11 @@ class CoursesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$course = Course::find($id);
+		if ($course) {
+			return $course;
+		}
+		return Response::make('Not Found', 404);
 	}
 
 	/**

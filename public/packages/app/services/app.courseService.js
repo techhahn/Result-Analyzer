@@ -7,7 +7,7 @@ angular
 	.module('result')
 	.factory('courseService', courseService);
 
-function courseService($resource, loginService) {
+function courseService($resource, loginService, $http) {
 	var Course = $resource('/result-analyzer/Result-Analyzer/public/index.php/course/:id', null, {
 		'update': {method: 'PUT', params: { id: '@id '}, isArray: false}
 	});
@@ -48,10 +48,24 @@ function courseService($resource, loginService) {
 			);
 	}
 
+	var getExams = function(id) {
+		return $http.get('/result-analyzer/Result-Analyzer/public/index.php/getExamCountForCourse/'+id);
+		  // success(function(data, status, headers, config) {
+		  // }).
+		  // error(function(data, status, headers, config) {
+		  // });
+	}
+
+	var getStudents = function(id) {
+		return $http.get('/result-analyzer/Result-Analyzer/public/index.php/getStudentCountForCourse/'+id);		
+	}
+
 	return {
 		all: all,
 		add: add,
-		get: get
+		get: get,
+		getStudents: getStudents,
+		getExams: getExams
 	}
 
 }

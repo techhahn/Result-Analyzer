@@ -1,0 +1,77 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="well">
+			<button type="button" ng-click="hidden(false)" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h1>{{course.title}}</h1>
+			<blockquote>
+			  <p>{{course.description}}</p>
+			</blockquote>
+			<small class="label label-info">Total Students: {{studentsCount}}</small> 
+			<small class="label label-info">Total Exams: {{studentsCount}}</small>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<ul class="ds-btn">
+	    
+	    <li>
+         <a  ui-sref="newStudents" class="btn btn-lg btn-primary">
+         <i class="glyphicon glyphicon-tasks pull-left"></i><span>New Student<br><small>Add new Student</small></span></a>
+        </li>
+
+        <li>
+         <a class="btn btn-lg btn-success">
+         <i class="glyphicon glyphicon-tasks pull-left"></i><span>Exams<br><small>List all exams</small></span></a>             
+        </li>
+
+
+        <li ng-click="allStudents(course.id);">
+         <a class="btn btn-lg btn-warning">
+          <i class="glyphicon glyphicon-user pull-left"></i><span>Students<br><small>List All Students</small></span></a> 
+        </li>
+
+        <li>
+         <a class="btn btn-lg btn-info">
+         <i class="glyphicon glyphicon-tasks pull-left"></i><span>Conduct Exam<br><small>Create New Exam</small></span></a> 
+        </li>
+    </ul>
+</div>
+
+<div class="modal fade" id="modal-students">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" ng-click="students={}" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Students List</h4>
+				<div class="form-group">
+					<label for="input" class="col-sm-4 control-label">Class Year</label>
+					<div class="col-sm-6">
+						<select ng-model="allStudentsYear" class="form-control" ng-change="loadStudents()">
+							<option selected ng-selected value="1">First Year</option>
+							<option value="2">Second Year</option>
+							<option value="3">Third Year</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<h2 ng-hide="students.length" class="text-center">No Students Found</h2>
+				<table class="table table-striped custab" ng-show="students.length">
+				    <thead>
+				        <tr>
+				            <th>Roll No</th>
+				            <th>PNR No</th>
+				            <th>Name</th>
+				        </tr>
+				    </thead>
+				        <tr ng-repeat="student in students">
+				            <td>{{ student.roll_no }}</td>
+				            <td>{{ student.PNR_no }}</td>
+				            <td>{{ student.name }}</td>
+				        </tr>
+				    </table>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

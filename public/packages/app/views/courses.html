@@ -1,3 +1,9 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div ui-view></div>
+  </div>
+</div>
+
 <div class="row" ng-class="{hidden: hide}">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<div class="list-group well">
@@ -11,7 +17,9 @@
 		        </div>
 		        <div class="row-content">
 		            <div class="action-secondary"><i class="icon-material-info"></i></div>
-		            <h4 class="list-group-item-heading">{{ course.title }} <small> <span class="glyphicon glyphicon-arrow-right"></span> {{ course.campus.title }}</small>
+		            <h4 class="list-group-item-heading">
+                <a ui-sref="courseDetails({id:course.id})">{{ course.title }}</a>
+                <small> <span class="glyphicon glyphicon-arrow-right"></span> {{ course.campus.title }}</small>
 					</h4>
 		            <p class="list-group-item-text">{{course.description}}</p>
 		        </div>
@@ -21,11 +29,7 @@
 	</div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div ui-view></div>
-  </div>
-</div>
+
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
