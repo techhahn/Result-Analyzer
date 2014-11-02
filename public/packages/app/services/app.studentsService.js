@@ -7,9 +7,9 @@ angular
 	.module('result')
 	.factory('studentsFactory', studentsFactory)
 
-studentsFactory.$inject = ['$resource', 'toaster'];
+studentsFactory.$inject = ['$resource', 'toaster', '$http'];
 
-function studentsFactory($resource, toaster) {
+function studentsFactory($resource, toaster, $http) {
 	var Student = $resource('/result-analyzer/Result-Analyzer/public/index.php/student/:id', null, {
 		'update': {method: 'PUT', params: { id: '@id '}, isArray: false}
 	});
@@ -28,6 +28,10 @@ function studentsFactory($resource, toaster) {
 			});
 	}
 
+	var getStudents = function(course, year) {
+		return $http.get('/result-analyzer/Result-Analyzer/public/index.php/getStudentsByCourseYear/'+course+'/'+year);
+	}
+
 	var add = function(credentials) {
 		return Student.save(credentials, function() {},
 			function(response){
@@ -42,6 +46,7 @@ function studentsFactory($resource, toaster) {
 
 	return {
 		add: add,
-		all: all
+		all: all,
+		getStudents: getStudents
 	}
 }

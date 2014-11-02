@@ -1,8 +1,20 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="student in students">{{student.name}} : {{student.email}}</li>
-			<hr>
-		</ul>
+		<div class="list-group well">
+
+			    <div class="list-group-item" ng-repeat="student in students">
+			        <div class="row-action-primary">
+			            <i class="icon-material-folder">{{student.name.charAt(0)}}</i>
+			        </div>
+			        <div class="row-content">
+			            <div class="action-secondary"><i class="icon-material-info"></i></div>
+			            <h4 class="list-group-item-heading">
+	                <small> <span class="glyphicon glyphicon-arrow-right"></span> {{ student.name }}</small>
+						</h4>
+			            <p class="list-group-item-text">{{student.email}}</p>
+			        </div>
+			    	<div class="list-group-separator"></div>
+			    </div>
+			</div>
 	</div>
 </div>

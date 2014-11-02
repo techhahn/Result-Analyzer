@@ -7,10 +7,8 @@ angular
 	.module('result')
 	.controller('studentsController', studentsController);
 
-studentsController.$inject = ['$scope'];
+studentsController.$inject = ['$scope', '$state'];
 
-function studentsController($scope) {
-	$scope.credentials = {};
-
-	
+function studentsController($scope, $state) {
+	$scope.credentials = {};	
 }
