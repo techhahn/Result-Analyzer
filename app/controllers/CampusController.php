@@ -90,10 +90,13 @@ class CampusController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		// $campus->find($id);
-		// if ($campus) {
-			
-		// }
+		$campus = Campus::find($id);
+
+		if($campus) {
+			$campus->delete();
+			return Response::make('Deleted', 200);
+		}
+		return Response::make('Not Found', 404);
 	}
 
 }
