@@ -6,7 +6,7 @@ function config($stateProvider) {
 	$stateProvider
 	.state('/', {
 		url: '',
-		template: '<h1>Default view </h1>'
+		templateUrl: 'packages/app/views/default.html'
 	})
 	.state('login',  {
 		url: '/login',
@@ -73,7 +73,22 @@ function config($stateProvider) {
 	.state('exams', {
 		parent: 'dashboard',
 		url: '/exams',
+		controller: 'examsController',
 		templateUrl: 'packages/app/views/exams.html'
+	})
+	.state('examDetails', {
+		parent: 'exams',
+		url: '/examDetails:id',
+		controller: 'examDetailsController',
+		templateUrl: 'packages/app/views/examDetails.html'
+		// resolve: {
+		// 	exams: ['examService', '$stateParams', function(examService, $stateParams) {
+		// 		return examService.get($stateParams.id)
+		// 				.$promise.then(function(data){
+		// 					return data;
+		// 				})
+		// 	}]
+		// }
 	})
 	.state('campusDetails', {
 		parent: 'campus',
@@ -87,6 +102,12 @@ function config($stateProvider) {
 				})
 			}]
 		}
+	})
+	.state('courseDetails', {
+		parent: 'courses',
+		url: '/courseDetails:id',
+		controller: 'courseDetailsController',
+		templateUrl: 'packages/app/views/courseDetails.html'
 	})
 	.state('students', {
 		parent: 'dashboard',
