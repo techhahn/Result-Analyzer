@@ -27,6 +27,8 @@
     "angular-loading-bar": "~0.5.1",
     "AngularJS-Toaster": "~0.4.7",
     "angular-ui-router": "~0.2.11",
-    "bootstrap-material-design": "*"
+    "bootstrap-material-design": "*",
+    "angular-velocity": "~0.1.1",
+    "chartjs": "~0.2.0"
   }
 }
