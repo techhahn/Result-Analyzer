@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="table-responsive well">
+			<table class="table table-responsive table-bordered">
+			<caption><h2>{{exam.name}}</h2></caption>
+				<thead>
+					<tr>
+						<th>Description:</th>
+						<th>Subjects: {{ exam.subjects.length }}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<h4>
+								<b>{{exam.type | examType}}</b> for <b>{{exam.course}}</b> in <b>{{exam.campus}}</b>, <b>{{exam.class | classType}}</b> was conducted <b><i>{{exam.created_at | fromnow}}</i></b>
+							</h4>
+							<p><b>{{ exam.students_count }}</b> students were registered to answer the exam.</p>
+						</td>
+						<td>
+							<table class="table">
+								<thead>
+									<tr>										
+										<th>Subject Name</th>
+										<th>Total Marks</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="subject in exam.subjects">
+										<td>{{subject.name}}</td>
+										<td>{{subject.marks}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
