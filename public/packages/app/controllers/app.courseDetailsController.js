@@ -7,11 +7,12 @@ angular
 	.module('result')
 	.controller('courseDetailsController', courseDetailsController);
 
-function courseDetailsController($scope, toaster, $stateParams, $rootScope, $state, courseService, studentsFactory) {
+function courseDetailsController($scope, toaster, $stateParams, $rootScope, $state, courseService, studentsFactory, examService) {
 	$scope.course = {};
 	$scope.studentsCount = 0;
 	$scope.exams = 0;
 	$scope.students = {};
+	$scope.allexams = {};
 
 	courseService.get($stateParams.id).$promise.then(
 		function(data){
@@ -35,6 +36,19 @@ function courseDetailsController($scope, toaster, $stateParams, $rootScope, $sta
 	$scope.allStudents = function(id) {
 		$('#modal-students').modal('show');
 		$scope.loadStudents();
+	}
+
+	$scope.showExamsModal = function() {
+		examService.getExamsByCourse($stateParams.id)
+			.success(
+				function(data){
+					$scope.allexams = data;
+				},
+				function(error){
+					toaster.pop('error', 'Error Loading Exams, please try again.');
+				}
+				)
+		$('#examsModal').modal('show');
 	}
 
 	$scope.hidden = function(val) {

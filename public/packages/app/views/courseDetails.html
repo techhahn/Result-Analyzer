@@ -20,7 +20,7 @@
          <i class="glyphicon glyphicon-tasks pull-left"></i><span>New Student<br><small>Add new Student</small></span></a>
         </li>
 
-        <li>
+        <li  ng-click="showExamsModal()">
          <a class="btn btn-lg btn-success">
          <i class="glyphicon glyphicon-tasks pull-left"></i><span>Exams<br><small>List all exams</small></span></a>             
         </li>
@@ -38,6 +38,36 @@
     </ul>
 </div>
 
+<div class="modal fade" id="examsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Exams</h4>
+      </div>
+	      <div class="modal-body">
+	      <h1 class="text-center" ng-hide="allexams.length">There Are No Exams Conducted.</h1>
+       			<div class="list-group">
+				    <div class="list-group-item" ng-repeat="exam in allexams">
+				        <div class="row-action-primary">
+				            <i class="mdi-file-folder">{{exam.name.charAt(0)}}</i>
+				        </div>
+				        <div class="row-content">
+				            <div class="least-content">{{ exam.created_at | fromnow }}</div>
+				            <h4 class="list-group-item-heading">{{ exam.name }}</h4>
+				            <p class="list-group-item-text">Exam type <b>{{exam.type | examType}}</b> will be conducted in <b>{{exam.campus}}'s</b> for <b>{{exam.course}}</b>.</p>
+				        </div>
+				    <div class="list-group-separator"></div>
+				    </div>
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="modal fade" id="modal-students">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -45,6 +75,7 @@
 				<button type="button" ng-click="students={}" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title">Students List</h4>
 				<div class="form-group">
+				<hr>
 					<label for="input" class="col-sm-4 control-label">Class Year</label>
 					<div class="col-sm-6">
 						<select ng-model="allStudentsYear" class="form-control" ng-change="loadStudents()">
