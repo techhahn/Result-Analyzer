@@ -1,9 +1,110 @@
 <div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    	<exam-details data="exam_id"></exam-details>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" class="hidden">
+    	<!-- <exam-details data="exam.id"></exam-details> -->
 	</div>
 </div>
 
 <div class="row">
-	
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		<div class="panel panel-default">
+		    <div class="panel-heading text-center">{{exam.name}}</div>
+		    <div class="panel-body">
+		    		<table class="table">
+						<tbody>
+							<tr>
+								<td colspan="2"><b>Name: <span class="text-info">{{exam.name}}</span></b></td>
+								<td><b>Campus: <span class="text-info">{{exam.campus}}</span></b></td>
+								<td><b>Course: <span class="text-info">{{exam.course}}</span></b></td>
+								<td class="bg-info">
+							        <div class="row-action-primary checkbox">
+							            <label><input type="checkbox" ng-model="exam.publish">Publish</label>
+							        </div>
+								</td>
+							</tr>
+							<tr>
+								<td><b>Class: <span class="text-info">{{exam.class | classType}}</span></b></td>
+								<td><b>Exam: <span class="text-info">{{exam.type | examType}}</span></b></td>
+								<td><b>Subjects: <span class="text-info">{{exam.subjects.length}}</span></b></td>
+								<td><b>Students answering exam: <span class="text-info">{{exam.students_count}}</span></b></td>
+								<td class="bg-danger"><button class="btn btn-danger">Delete Exam?</button></td>
+							</tr>
+							<tr>
+								<td colspan="5"><strong><u>Subjects:</u></strong></td>
+							</tr>
+							<tr ng-repeat="subject in exam.subjects">
+								<td colspan="3"><b>Subject Name: <span class="text-info">{{subject.name}}</span></b></td>
+								<td><b>Marks: <span class="text-info">{{subject.marks}}</span></b></td>
+								<td><button type="button" class="close" ng-click="remove($index)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="panel panel-default">
+						<div class="panel-heading clearfix">
+							<h2 class="pull-left col-lg-6 col-md-6 col-sm-6 col-xs-6">Students:</h2><button ng-click="loadStudents()" ng-disabled="students.length" class="btn btn-primary pull-right btn-lg"><span class="glyphicon glyphicon-refresh"></span> {{ (students.length? 'Data Loaded' : 'Load Students Data') }}</button>
+						</div>
+		    			<div class="panel-body">
+		    				<h2 ng-hide="exam.students_count">{{'No Students for the course'}} <small>Please add some students</small></h2>
+							
+							<div class="row">
+								<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+									<ol class="list-unstyled">
+										<li ng-repeat="student in students" class="custom-list">
+											<a ng-click="addToAnswerExam($index)" class="btn btn-link btn-sm btn-block clearfix">
+												<span class="students-list-custom pull-left">
+													<b>{{student.name}}</b> 
+													<small>Roll No.: {{student.roll_no}}</small>
+													<small>PNR No.: {{student.pnr_no || 'NA'}}</small>
+												</span>
+												<span class="glyphicon glyphicon-plus-sign pull-right"></span>
+											</a>
+										</li>
+									</ol>	
+									<!-- <div class="list-group">
+									    <div class="list-group-item" ng-repeat="student in students">
+									        <div class="row-action-primary checkbox">
+									            <button ng-click="addToAnswerExam(student.id)" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+									        </div>
+									        <div class="row-content">
+									            <h4 class="list-group-item-heading">{{student.name}}</h4>
+									            <p class="list-group-item-text">{{student.roll_no}}.</p>
+									        </div>
+									    <div class="list-group-separator"></div>
+									    </div>
+									</div> -->
+								</div>
+								<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7" >
+									
+									<div class="list-group">
+									    <div class="list-group-item" ng-repeat="student in students_answering">
+									        <div class="row-action-primary">
+									            <button class="btn btn-primary" ng-click="removeFromAnsweringExam(student.id)"><span class="glyphicon glyphicon-remove"></span></button>
+									        </div>
+									        <div class="row-content">
+									            <h4 class="list-group-item-heading">Name: {{student.student.name}}</h4>
+									            <p class="list-group-item-text">Roll no: {{student.student.roll_no}}</p>
+									            <small>Subjects</small>
+									            <ol class="list-unstyled">
+									            	<li ng-repeat="subject in student.subjects" class="clearfix">
+									            		<b>Name: {{subject.name}}</b>
+									            		<b>Marks: {{subject.marks}}</b>
+
+												        <label class="pull-right">
+												        	<input ng-model="subject.answering" ng-change="answeringChanged($index, $parent.$index, student.id)" type="checkbox"> Answering?
+												        </label>
+									            	</li>
+									            </ol>
+									        </div>
+									    <div class="list-group-separator"></div>
+									    </div>
+									</div>
+								</div>
+							</div>	
+		    			</div>
+		    		</div>
+		    		<a ng-active="students_answering.length" class="btn btn-material-teal btn-flat text-center" ui-sref="marksheet({id:exam.id})">Edit Marksheet <span class="glyphicon glyphicon-th-list"></span></a>
+		    </div>
+		</div>
+	</div>
+
 </div>
