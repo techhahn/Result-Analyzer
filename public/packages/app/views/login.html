@@ -14,14 +14,17 @@
 		<form name="loginForm" ng-submit="doLogin()" class="well well-lg" method="POST" role="form">
 			<legend>Login</legend>
 
-			<div class="form-group">
+			<div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && loginForm.email.$dirty}">
 				<label for="">Email</label>
-				<input type="email" ng-model="credentials.email" class="form-control" id="" placeholder="Please Enter Your Email Address" required>
+				<input type="email" ng-model-options="{ debounce: 500 }" ng-model="credentials.email" name="email" class="form-control" id="" placeholder="Please Enter Your Email Address" required>
+				<p class="help-block" ng-show="loginForm.email.$error.email && loginForm.email.$dirty">Invalid Email Address</p>
+				<p class="help-block" ng-show="loginForm.email.$error.required && loginForm.email.$dirty">Email Address Required</p>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group" ng-class="{'has-error' : loginForm.passwordValidation.$invalid && loginForm.passwordValidation.$dirty}">
 				<label for="">Password</label>
-				<input type="password" ng-model="credentials.password" class="form-control" id="" placeholder="Please Enter Your Password" required>
+				<input type="password" ng-model-options="{ debounce: 500 }" ng-model="credentials.password" name="passwordValidation" class="form-control" id="" placeholder="Please Enter Your Password" required>
+				<p class="help-block" ng-show="loginForm.passwordValidation.$error.required && loginForm.passwordValidation.$dirty">Password Required</p>
 			</div>
 
 			<button ng-disabled="loginForm.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
