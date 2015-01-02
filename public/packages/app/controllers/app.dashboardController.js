@@ -5,5 +5,5 @@ angular
 dashboardController.$inject = ['$scope', 'loginService', '$location', '$state'];
 
 function dashboardController($scope, loginService, $location, $state) {
-			$state.transitionTo('campus');
+			// $state.transitionTo('campus');
 }
